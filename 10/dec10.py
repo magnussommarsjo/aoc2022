@@ -40,4 +40,26 @@ signal_strengths = [circuit.get_signal_strength_at(cycle) for cycle in (20, 60, 
 
 print("Sum of signal strengths: ", sum(signal_strengths))
 
+# PART TWO ========
+
+print(circuit.register_history)
+crt = []
+for idx in range(240):
+    sprite_pos = circuit.register_history[idx]
+    lower = sprite_pos-1
+    higher = sprite_pos+1
+    print(idx, f"{lower=}, {higher=}")
+
+    if lower <= idx%40 <= higher:
+        crt.append('#')
+    else:
+        crt.append('.')
+
+row_length = 40
+for idx in range(6):
+    start = idx*row_length
+    end = (idx*row_length)+row_length
+    #print(start, end)
+    print(''.join(crt[start:end]))
+
 
